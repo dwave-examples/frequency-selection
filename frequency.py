@@ -258,7 +258,9 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     demand, nfreq, reuse_distances = load_problem(args.problem)
-    if args.nfreq:
+    if args.nfreq is not None:
+        if args.nfreq <= 0:
+            raise ValueError("number of frequencies must be positive")
         # Override problem-dependent default
         nfreq = args.nfreq
     print(nfreq, 'frequencies considered')

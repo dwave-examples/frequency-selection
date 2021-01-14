@@ -62,7 +62,7 @@ def _euclidean_dist(cell1, cell2):
         cell1 (int):
             Index for first cell (starting with 1)
         cell2 (int):
-            Index for first cell (starting with 1)
+            Index for second cell (starting with 1)
     """
     if cell1 == cell2:
         return 0

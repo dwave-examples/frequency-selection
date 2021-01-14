@@ -199,18 +199,23 @@ def _print_frequency_separations(reuse_distances, solution):
     T = get_forbidden_set(1, 1, reuse_distances)
     print('  Station: min actual separation vs allowed separation')
     for node, frequencies in sorted(solution.items()):
-        sep = min(frequencies[i+1] - frequencies[i] for i in range(len(frequencies)-1))
-        allowed = max(T) + 1
-        print('    {:2}: {:2} {:2} {:2}'.format(node, sep, '>=' if sep >= allowed else '<', allowed))
+        if len(frequencies) > 1:
+            sep = min(frequencies[i+1] - frequencies[i] for i in range(len(frequencies)-1))
+            allowed = max(T) + 1
+            print('    {:2}: {:2} {:2} {:2}'.format(node, sep, '>=' if sep >= allowed else '<', allowed))
 
     print('  Station pair: min actual separation vs allowed separation')
     nodes = sorted(solution.keys())
     for i in range(len(nodes)):
         node1 = nodes[i]
         f1_vals = solution[node1]
+        if not f1_vals:
+            continue
         for j in range(i+1, len(nodes)):
             node2 = nodes[j]
             f2_vals = solution[node2]
+            if not f2_vals:
+                continue
             T = get_forbidden_set(node1, node2, reuse_distances)
             sep = min(abs(f1_vals[i] - f2_vals[j]) for i in range(len(f1_vals)) for j in range(len(f2_vals)))
             allowed = max(T) + 1
@@ -280,8 +285,9 @@ if __name__ == '__main__':
         for node, f in sorted(frequencies.items()):
             print('Station {}: {}'.format(node, f))
         print('')
-    fmax = max([max(freqs) for freqs in frequencies.values()])
-    print('Max frequency:', fmax)
+    station_maximums = [max(freqs) for freqs in frequencies.values() if freqs]
+    if station_maximums:
+        print('Max frequency:', max(station_maximums))
 
     if args.verbose:
         print('')

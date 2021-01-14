@@ -24,9 +24,9 @@ frequency assignments that satisfy two constraints:
 This example makes use of the Philadelphia benchmark instances introduced by
 Ref. [2].  These problem instances involve a hexagonal grid with 21 stations, as
 shown below.  Nine different problem instances are defined, labeled "P1" through
-"P9", which each have associated demand and frequency reuse distance
-(interference) specifications.  The schematic below is colored according to the
-demand values for problem instance P1.  Further details are given in Refs [2,3].
+"P9", which each have associated demand and interference ("reuse distance")
+specifications.  The schematic below is colored according to the demand values
+for problem instance P1.  Further details are given in Refs [2,3].
 
 ![Philadelphia instance](_static/Philadelphia.png)
 
@@ -55,14 +55,13 @@ Or:
 python frequency.py --save-plot
 ```
 
-This will load the default "small" problem, which uses only a subset of the
-stations from the full Philadelphia instance and reduces the demands.  The
-`--show-plot` and `--save-plot` flags are optional, and they create a plot of
-the stations, colored by their relative demands; any constraint violations
-(either demand or interference) are indicated by a hash fill pattern in the
-cells corresponding to the station in which a constraint was violated.  The
-`--show-plot` flag displays an interactive plot using matplotlib, and
-`--save-plot` saves the plot to a file.
+This loads the default small problem, which uses only a subset of the stations
+from the full Philadelphia instance and reduces the demands.  The optional
+`--show-plot` (display interactive plot using Matplotlib) and `--save-plot`
+(save to file) flags create a plot of the stations, colored by their relative
+demands.  Any constraint violations (either demand or interference) are
+indicated by a hash fill pattern in the cells corresponding to the station in
+which a constraint was violated.
 
 To run the analysis for the full "P1" Philadelphia problem instance, execute:
 
@@ -87,7 +86,7 @@ The code consists of the following steps:
    The objective function is formed by encoding all of the constraints as
    penalty functions.
 3. The problem is solved using a combination of classical and quantum computing
-   resources via `LeapHybridSampler`.
+   resources with Leap's hybrid BQM solver.
 4. Information about the feasibility of the solution is printed to the screen,
    optionally displaying a plot of the stations to indicate any constraint
    violations.

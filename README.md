@@ -4,9 +4,8 @@ Frequency selection problems have to do with assigning frequencies to
 transmitting and receiving stations for wireless communication.  Various problem
 definitions have been discussed in the literature (see, for example, [1]), but
 the problems generally involve choosing the frequencies subject to constraints
-associated with interference.  Interference occurs when two frequencies are both
-close to each other in the electromagnetic band and assigned to connections that
-are geographically close.
+associated with interference.  Interference occurs when nearby stations use
+frequencies that are close together.
 
 In this example, we consider the "feasibility frequency assignment problem" [1].
 In this problem, there is a set of stations to which frequencies must be

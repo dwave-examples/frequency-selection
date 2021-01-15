@@ -97,30 +97,30 @@ The code consists of the following steps:
 The formulation of the feasibility frequency assignment problem as a constraint
 satisfaction problem with binary variables is discussed in Ref. [1].  The binary
 variables are denoted by `x_{vf}`, which are indicators for whether frequency
-`f` is selected for station `v`.  Mathematically, the constraints associated
-with meeting the specified demand at each station are specified as:
+`f` is selected for station `v`.  The constraint satisfaction problem is
+formulated as a binary quadratic model by constructing an objective function
+that includes a penalty whenever a constraint is violated.
+
+Mathematically, the constraint to meet the given demand at each station is
+specified as:
 
 ![Eq1](_static/Eq1.png)
 
-where `m(v)` denotes the demand at station `v`.  The constraints associated with
-interference are given by:
-
-![Eq2](_static/Eq2.png)
-
-Here, a constraint is added whenever the combination of assignments `x_{vf}` and
-`x_{gw}` would result in interference.
-
-The constraint satisfaction problem is formulated as a binary quadratic model by
-constructing an objective function that includes a penalty whenever a constraint
-is violated.  The penalties associated with the demand constraints can be formed
-by squaring the difference between the selected and demanded number of
-frequencies at each station:
+where `m(v)` denotes the demand at station `v`. The penalties associated with
+the demand constraints can be formed by squaring the difference between the
+selected and demanded number of frequencies at each station:
 
 ![H1](_static/H1.png)
 
-For the interference constraints, we simply penalize interference by adding a
-positive interaction coefficient for each case in which the pair `(x_{vf},
-x_{gw})` would result in interference.
+To account for the interference constraint, the following inequality is applied
+for all pairs of selections `x_{vf}` and `x_{gw}` that would result in
+interference:
+
+![Eq2](_static/Eq2.png)
+
+These inequalities are incorporated into the binary quadratic model by assigning
+a positive interaction coefficient to all pairs of binary variables that produce
+interference.
 
 
 ## References

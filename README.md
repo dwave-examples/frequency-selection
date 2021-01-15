@@ -12,13 +12,14 @@ In this problem, there is a set of stations to which frequencies must be
 assigned, and a set of available frequencies, and the goal is to identify
 frequency assignments that satisfy two constraints:
 
-- Constraint 1: The number of frequencies assigned to each station must equal
-  the specified requirement (i.e., "demand") for that station.
-- Constraint 2: No interference occurs.  Interference can be defined in terms of
-  a forbidden set of frequency differences associated with each pair of
-  stations.  For example, the problem may specify that frequencies assigned to
-  the same station must differ by at least 5, whereas frequencies assigned to
-  adjacent stations must differ by at least 2.
+- Constraint 1: Each station is assigned the number of frequencies it requires,
+  referred to as the demand.
+- Constraint 2: No interference occurs.
+
+Interference can be defined in terms of a forbidden set of frequency differences
+associated with stations.  For example, the problem may specify that frequencies
+assigned to the same station must differ by at least 5, whereas frequencies
+assigned to adjacent stations must differ by at least 2.
 
 This example makes use of the Philadelphia benchmark instances introduced by
 Ref. [2].  These problem instances involve a hexagonal grid with 21 stations, as

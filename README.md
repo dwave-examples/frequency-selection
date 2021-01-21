@@ -32,14 +32,13 @@ demand values for problem instance P1.  Further details are given in Refs.
 ![Philadelphia instance](_static/Philadelphia.png)
 
 The Philadelphia instances have been widely used to study the minimum span
-frequency assignment problem.  Summaries of reported results can be found at
-http://fap.zib.de/problems/Philadelphia/ [[3]](#3).  The minimum span frequency
-assignment problem involves finding the frequency assignments that satisfy the
-constraints defined above, while minimizing the difference between the largest
-and smallest frequencies used.  One can view feasibility frequency assignment as
-a subproblem of minimum span frequency assignment, in which the feasible
-solution is searched for using increasingly smaller sets of candidate
-frequencies.
+frequency assignment problem -- this is the problem of finding frequency
+assignments that satisfy the constraints defined above while minimizing the
+difference between the highest and lowest frequencies used.  Summaries of
+reported results can be found at http://fap.zib.de/problems/Philadelphia/
+[[3]](#3).  One can view feasibility frequency assignment as a subproblem of
+minimum span frequency assignment, in which the feasible solution is searched
+for using increasingly smaller sets of candidate frequencies.
 
 
 ## Usage

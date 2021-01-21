@@ -2,15 +2,15 @@
 
 Frequency selection problems have to do with assigning frequencies to
 transmitting and receiving stations for wireless communication.  Various problem
-definitions have been discussed in the literature (see, for example, [1]), but
-the problems generally involve choosing the frequencies subject to constraints
-associated with interference.  Interference occurs when nearby stations use
-frequencies that are close together.
+definitions have been discussed in the literature (see, for example, [[1]](#1)),
+but the problems generally involve choosing the frequencies subject to
+constraints associated with interference.  Interference occurs when nearby
+stations use frequencies that are close together.
 
-In this example, we consider the "feasibility frequency assignment problem" [1].
-In this problem, there is a set of stations to which frequencies must be
-assigned, and a set of available frequencies, and the goal is to identify
-frequency assignments that satisfy two constraints:
+In this example, we consider the "feasibility frequency assignment problem"
+[[1]](#1).  In this problem, there is a set of stations to which frequencies
+must be assigned, and a set of available frequencies, and the goal is to
+identify frequency assignments that satisfy two constraints:
 
 - Constraint 1: Each station is assigned the number of frequencies it requires,
   referred to as the demand.
@@ -22,17 +22,18 @@ assigned to the same station must differ by at least 5, whereas frequencies
 assigned to adjacent stations must differ by at least 2.
 
 This example makes use of the Philadelphia benchmark instances introduced by
-Ref. [2].  These problem instances involve a hexagonal grid with 21 stations, as
-shown below.  Nine different problem instances are defined, labeled "P1" through
-"P9", which each have associated demand and interference ("reuse distance")
-specifications.  The schematic below is colored according to the demand values
-for problem instance P1.  Further details are given in Refs [2,3].
+Ref. [[2]](#2).  These problem instances involve a hexagonal grid with 21
+stations, as shown below.  Nine different problem instances are defined, labeled
+"P1" through "P9", which each have associated demand and interference ("reuse
+distance") specifications.  The schematic below is colored according to the
+demand values for problem instance P1.  Further details are given in Refs
+[[2](#2),[3](#3)].
 
 ![Philadelphia instance](_static/Philadelphia.png)
 
 The Philadelphia instances have been widely used to study the minimum span
 frequency assignment problem.  Summaries of reported results can be found at
-http://fap.zib.de/problems/Philadelphia/ [3].  The minimum span frequency
+http://fap.zib.de/problems/Philadelphia/ [[3]](#3).  The minimum span frequency
 assignment problem involves finding the frequency assignments that satisfy the
 constraints defined above, while minimizing the difference between the largest
 and smallest frequencies used.  One can view feasibility frequency assignment as
@@ -95,10 +96,10 @@ The code consists of the following steps:
 ## Code Specifics
 
 The formulation of the feasibility frequency assignment problem as a constraint
-satisfaction problem with binary variables is discussed in Ref. [1].  The binary
-variables are denoted by `x_{vf}`, which are indicators for whether frequency
-`f` is selected for station `v`.  The constraint satisfaction problem is
-formulated as a binary quadratic model by constructing an objective function
+satisfaction problem with binary variables is discussed in Ref. [[1]](#1).  The
+binary variables are denoted by `x_{vf}`, which are indicators for whether
+frequency `f` is selected for station `v`.  The constraint satisfaction problem
+is formulated as a binary quadratic model by constructing an objective function
 that includes a penalty whenever a constraint is violated.
 
 Mathematically, the constraint to meet the given demand at each station is
@@ -125,15 +126,15 @@ interference.
 
 ## References
 
-[1] Aardal, K.I., van Hoesel, S.P.M., Koster, A.M.C.A. et al. Models and
+<a name="1">[1]</a> Aardal, K.I., van Hoesel, S.P.M., Koster, A.M.C.A. et al. Models and
 solution techniques for frequency assignment problems. 4OR 1, 261–317,
 2003. https://doi.org/10.1007/s10288-003-0022-6.
 
-[2] Anderson, LG. A simulation study of some dynamic channel assignment
+<a name="2">[2]</a> Anderson, LG. A simulation study of some dynamic channel assignment
 algorithms in a high capacity mobile telecommunications system. IEEE
 Transactions on Communications 21, 1294– 1301, 1973.
 
-[3] URL: http://fap.zib.de. Maintained by A. Eisenblätter and
+<a name="3">[3]</a> URL: http://fap.zib.de. Maintained by A. Eisenblätter and
 A. M. C. A. Koster.
 
 

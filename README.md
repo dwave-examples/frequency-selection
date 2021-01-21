@@ -2,10 +2,10 @@
 
 Frequency selection problems have to do with assigning frequencies to
 transmitting and receiving stations for wireless communication.  Various problem
-definitions have been discussed in the literature (see, for example, [[1]](#1)),
-but the problems generally involve choosing the frequencies subject to
-constraints associated with interference.  Interference occurs when nearby
-stations use frequencies that are close together.
+definitions have been discussed in the literature (see, for example,
+Ref. [[1]](#1)), but the problems generally involve choosing the frequencies
+subject to constraints associated with interference.  Interference occurs when
+nearby stations use frequencies that are close together.
 
 In this example, we consider the "feasibility frequency assignment problem"
 [[1]](#1).  In this problem, there is a set of stations to which frequencies
@@ -26,7 +26,7 @@ Ref. [[2]](#2).  These problem instances involve a hexagonal grid with 21
 stations, as shown below.  Nine different problem instances are defined, labeled
 "P1" through "P9", which each have associated demand and interference ("reuse
 distance") specifications.  The schematic below is colored according to the
-demand values for problem instance P1.  Further details are given in Refs
+demand values for problem instance P1.  Further details are given in Refs.
 [[2](#2),[3](#3)].
 
 ![Philadelphia instance](_static/Philadelphia.png)

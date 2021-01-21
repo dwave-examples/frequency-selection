@@ -27,7 +27,7 @@ example_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class TestNetwork(unittest.TestCase):
-    """Test reading in the network structure"""
+    """Test reading in the network structure."""
 
     def test_small_network(self):
         demand, nfreq, reuse_distances  = load_problem('small')
@@ -70,7 +70,7 @@ class TestNetwork(unittest.TestCase):
 
 
 class TestSmallProblem(unittest.TestCase):
-    """Test solution to small problem"""
+    """Test solution to small problem."""
 
     def test_small(self):
         
@@ -89,7 +89,7 @@ class TestSmallProblem(unittest.TestCase):
 
 
 class TestIntegration(unittest.TestCase):
-    """Test execution as a script"""
+    """Test execution as a script."""
 
     def test_integration(self):
         file_path = os.path.join(example_dir, "frequency.py")

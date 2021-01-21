@@ -56,7 +56,7 @@ rvals = 5*[0] + 7*[1] + 6*[2] + 3*[3]
 
 
 def _euclidean_dist(cell1, cell2):
-    """Get Euclidean distance between cells
+    """Get Euclidean distance between cells.
 
     Args:
         cell1 (int):
@@ -72,7 +72,7 @@ def _euclidean_dist(cell1, cell2):
 
 
 def _ge_close(x, y):
-    """Utility routine for >= with approximate equality
+    """Utility routine for >= with approximate equality.
 
     In order to avoid floating point equality comparison issues, just
     to be safe
@@ -92,7 +92,7 @@ def get_forbidden_set(cell1, cell2, reuse_distances):
 
 
 def load_problem(problem='small'):
-    """Load network structure for problem definition
+    """Load network structure for problem definition.
 
     Args:
         problem (str)
@@ -173,7 +173,7 @@ def load_problem(problem='small'):
 
 
 def plot_nodes(nodes, demand=None, interference_nodes=[], demand_violations=[]):
-    """Plot hexagonal grid for the specified nodes
+    """Plot hexagonal grid for the specified nodes.
 
     Create a plot of the specified nodes, which must be a subset from
     the Philadelphia instance.  The pre-defined axial coordinates are

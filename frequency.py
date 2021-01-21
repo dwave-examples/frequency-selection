@@ -28,7 +28,7 @@ from philadelphia import load_problem, get_forbidden_set, plot_nodes
 
 
 def construct_bqm(demand, nfreq, reuse_distances, LAGRANGE=1.0):
-    """Construct BQM for feasibility frequency assignment problem
+    """Construct BQM for feasibility frequency assignment problem.
     
     Args:
         demand (dict):
@@ -99,7 +99,7 @@ def construct_bqm(demand, nfreq, reuse_distances, LAGRANGE=1.0):
 
 
 def check_results(demand, nfreq, reuse_distances, sample, verbose=True):
-    """Check whether a given solution vector satisfies the problem constraints
+    """Check whether a given solution vector satisfies the problem constraints.
 
     Args:
         demand (dict):
@@ -175,7 +175,7 @@ def check_results(demand, nfreq, reuse_distances, sample, verbose=True):
 
 
 def _get_frequencies(nodes, nfreq, sample):
-    """Retrieve the frequencies selected for each node
+    """Retrieve the frequencies selected for each node.
 
     Returns:
         dict: Dictionary mapping the node to a list of frequencies
@@ -187,7 +187,7 @@ def _get_frequencies(nodes, nfreq, sample):
 
 
 def _print_frequency_separations(reuse_distances, solution):
-    """Print detailed information about frequency separation in solution"""
+    """Print detailed information about frequency separation in solution."""
     if len(solution) > 10:
         # Avoid printing detail with full problem instance, which would be very lengthy
         print('Skipping interference detail for full problem instance')

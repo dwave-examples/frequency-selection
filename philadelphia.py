@@ -101,7 +101,7 @@ def get_forbidden_set(cell1, cell2, reuse_distances):
             continue
         if _ge_close(d, reuse_distances[j]):
             return set(range(j))
-    return set([])
+    return set()
 
 
 def load_problem(problem='small'):

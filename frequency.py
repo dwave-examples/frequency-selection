@@ -150,6 +150,7 @@ if __name__ == '__main__':
             
     sampler = LeapHybridSampler()
     results = sampler.sample(bqm)
+    results.resolve() # Get solution before printing "Solution:"
 
     print('\nSolution:')
     violations = check_results(demand, nfreq, reuse_distances, results.first, verbose=False)

@@ -52,7 +52,6 @@ def construct_bqm(demand, nfreq, reuse_distances, penalty_coef=1.0):
     # x_vf, v in nodes, f in frequencies: Is f assigned to node v?
 
     nodes = sorted(list(demand.keys()))
-    n_nodes = len(nodes)
 
     bqm = dimod.AdjVectorBQM(dimod.BINARY)
 

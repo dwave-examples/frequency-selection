@@ -28,7 +28,7 @@ from philadelphia import load_problem, get_forbidden_set, plot_nodes
 from utilities import check_results, get_frequencies, print_frequency_separations
 
 
-def construct_bqm(demand, nfreq, reuse_distances, LAGRANGE=1.0):
+def construct_bqm(demand, nfreq, reuse_distances, penalty_coef=1.0):
     """Construct BQM for feasibility frequency assignment problem.
     
     Args:
@@ -38,11 +38,12 @@ def construct_bqm(demand, nfreq, reuse_distances, LAGRANGE=1.0):
             Number of frequencies to consider
         reuse_distances (list):
             List of reuse distances
-        LAGRANGE (float):
-            Lagrange multiplier.  Not needed in current formulation,
-            which does not include an objective component of the
-            problem formulation.  Retained only as a placeholder in
-            case the problem is extended to include an objective.
+        penalty_coef (float):
+            Penalty coefficient associated with constraint penalty
+            function.  Not needed in current formulation, which does
+            not include an objective component of the problem
+            formulation.  Retained only as a placeholder in case the
+            problem is extended to include an objective.
 
     Returns:
         AdjVectorBQM
@@ -61,12 +62,12 @@ def construct_bqm(demand, nfreq, reuse_distances, LAGRANGE=1.0):
     # Linear parts:
     for v in nodes:
         for f in range(nfreq):
-            bqm.add_variable('x_{}_{}'.format(v, f), LAGRANGE * (1.0 - 2*demand[v]))
+            bqm.add_variable('x_{}_{}'.format(v, f), penalty_coef * (1.0 - 2*demand[v]))
     # Interactions:
     for v in nodes:
         for fi in range(nfreq):
             for fj in range(fi+1,nfreq):
-                bqm.add_interaction('x_{}_{}'.format(v, fi), 'x_{}_{}'.format(v, fj), LAGRANGE * 2.0)
+                bqm.add_interaction('x_{}_{}'.format(v, fi), 'x_{}_{}'.format(v, fj), penalty_coef * 2.0)
 
 
     # Define penalties associated with the interference constraints.
@@ -80,7 +81,7 @@ def construct_bqm(demand, nfreq, reuse_distances, LAGRANGE=1.0):
         for f in range(nfreq):
             for g in range(f+1,nfreq):
                 if abs(f-g) in T:
-                    bqm.add_interaction('x_{}_{}'.format(v, f), 'x_{}_{}'.format(v, g), LAGRANGE)
+                    bqm.add_interaction('x_{}_{}'.format(v, f), 'x_{}_{}'.format(v, g), penalty_coef)
 
 
     # Now enforce the cross-node conflicts:
@@ -94,7 +95,7 @@ def construct_bqm(demand, nfreq, reuse_distances, LAGRANGE=1.0):
                 # Note f and g are frequencies on different nodes, so we do need to look at all combinations
                 for g in range(nfreq):
                     if abs(f-g) in T:
-                        bqm.add_interaction('x_{}_{}'.format(v, f), 'x_{}_{}'.format(w, g), LAGRANGE)
+                        bqm.add_interaction('x_{}_{}'.format(v, f), 'x_{}_{}'.format(w, g), penalty_coef)
 
     return bqm
 

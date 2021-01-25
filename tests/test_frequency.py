@@ -38,35 +38,35 @@ class TestNetwork(unittest.TestCase):
         demand, nfreq, reuse_distances = load_problem('P1')
 
         self.assertEqual(len(demand), 21)
-        self.assertEqual(get_forbidden_set(1, 1, P1_REUSE_DISTANCES), [0, 1, 2, 3, 4])
-        self.assertEqual(get_forbidden_set(1, 2, P1_REUSE_DISTANCES), [0, 1])
-        self.assertEqual(get_forbidden_set(1, 3, P1_REUSE_DISTANCES), [0])
-        self.assertEqual(get_forbidden_set(5, 18, P1_REUSE_DISTANCES), [0])
-        self.assertEqual(get_forbidden_set(3, 16, P1_REUSE_DISTANCES), [0])
-        self.assertEqual(get_forbidden_set(1, 5, P1_REUSE_DISTANCES), [])
-        self.assertEqual(get_forbidden_set(20, 5, P1_REUSE_DISTANCES), [])
-        self.assertEqual(get_forbidden_set(4, 15, P1_REUSE_DISTANCES), [])
-        self.assertEqual(get_forbidden_set(3, 20, P1_REUSE_DISTANCES), [0])
+        self.assertEqual(get_forbidden_set(1, 1, P1_REUSE_DISTANCES), set([0, 1, 2, 3, 4]))
+        self.assertEqual(get_forbidden_set(1, 2, P1_REUSE_DISTANCES), set([0, 1]))
+        self.assertEqual(get_forbidden_set(1, 3, P1_REUSE_DISTANCES), set([0]))
+        self.assertEqual(get_forbidden_set(5, 18, P1_REUSE_DISTANCES), set([0]))
+        self.assertEqual(get_forbidden_set(3, 16, P1_REUSE_DISTANCES), set([0]))
+        self.assertEqual(get_forbidden_set(1, 5, P1_REUSE_DISTANCES), set([]))
+        self.assertEqual(get_forbidden_set(20, 5, P1_REUSE_DISTANCES), set([]))
+        self.assertEqual(get_forbidden_set(4, 15, P1_REUSE_DISTANCES), set([]))
+        self.assertEqual(get_forbidden_set(3, 20, P1_REUSE_DISTANCES), set([0]))
 
         # Differs from P2:
-        self.assertEqual(get_forbidden_set(4, 20, P1_REUSE_DISTANCES), [0])
+        self.assertEqual(get_forbidden_set(4, 20, P1_REUSE_DISTANCES), set([0]))
         
     def test_P2_definition(self):
 
-        self.assertEqual(get_forbidden_set(1, 1, P2_REUSE_DISTANCES), [0, 1, 2, 3, 4])
-        self.assertEqual(get_forbidden_set(1, 2, P2_REUSE_DISTANCES), [0, 1])
-        self.assertEqual(get_forbidden_set(1, 3, P2_REUSE_DISTANCES), [0])
-        self.assertEqual(get_forbidden_set(5, 18, P2_REUSE_DISTANCES), [0])
-        self.assertEqual(get_forbidden_set(3, 16, P2_REUSE_DISTANCES), [0])
-        self.assertEqual(get_forbidden_set(1, 5, P1_REUSE_DISTANCES), [])
-        self.assertEqual(get_forbidden_set(20, 5, P1_REUSE_DISTANCES), [])
-        self.assertEqual(get_forbidden_set(4, 15, P2_REUSE_DISTANCES), [])
+        self.assertEqual(get_forbidden_set(1, 1, P2_REUSE_DISTANCES), set([0, 1, 2, 3, 4]))
+        self.assertEqual(get_forbidden_set(1, 2, P2_REUSE_DISTANCES), set([0, 1]))
+        self.assertEqual(get_forbidden_set(1, 3, P2_REUSE_DISTANCES), set([0]))
+        self.assertEqual(get_forbidden_set(5, 18, P2_REUSE_DISTANCES), set([0]))
+        self.assertEqual(get_forbidden_set(3, 16, P2_REUSE_DISTANCES), set([0]))
+        self.assertEqual(get_forbidden_set(1, 5, P1_REUSE_DISTANCES), set([]))
+        self.assertEqual(get_forbidden_set(20, 5, P1_REUSE_DISTANCES), set([]))
+        self.assertEqual(get_forbidden_set(4, 15, P2_REUSE_DISTANCES), set([]))
         # This case does not match provided diagrams if reuse
         # distances taken as given.  See notes in philadelphia.py.
-        self.assertEqual(get_forbidden_set(3, 20, P2_REUSE_DISTANCES), [0])
+        self.assertEqual(get_forbidden_set(3, 20, P2_REUSE_DISTANCES), set([0]))
 
         # Differs from P1
-        self.assertEqual(get_forbidden_set(4, 20, P2_REUSE_DISTANCES), [])
+        self.assertEqual(get_forbidden_set(4, 20, P2_REUSE_DISTANCES), set([]))
 
 
 class TestSmallProblem(unittest.TestCase):

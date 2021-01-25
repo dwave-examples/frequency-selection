@@ -81,14 +81,27 @@ def _ge_close(x, y):
 
 
 def get_forbidden_set(cell1, cell2, reuse_distances):
+    """Get set of forbidden frequency differences for given cell numbers.
+
+    Args:
+        cell1 (int):
+            Index for first cell (starting with 1)
+        cell2 (int):
+            Index for second cell (starting with 1)
+        reuse_distances (list):
+            Problem-specific list of frequency re-use distances
+    
+    Returns:
+        set
+    """
     d = _euclidean_dist(cell1, cell2)
 
     for j in range(1, len(reuse_distances)+1):
         if _ge_close(d, reuse_distances[j-1]):
             continue
         if _ge_close(d, reuse_distances[j]):
-            return list(range(j))
-    return []
+            return set(range(j))
+    return set([])
 
 
 def load_problem(problem='small'):

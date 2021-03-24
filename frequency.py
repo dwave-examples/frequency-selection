@@ -148,7 +148,7 @@ if __name__ == '__main__':
     print('{} interactions'.format(bqm.num_interactions))
             
     sampler = LeapHybridSampler()
-    results = sampler.sample(bqm)
+    results = sampler.sample(bqm, label='Example - Frequency Selection')
     results.resolve() # Get solution before printing "Solution:"
 
     print('\nSolution:')

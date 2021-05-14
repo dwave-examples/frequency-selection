@@ -18,7 +18,7 @@ import os
 import sys
 import subprocess
 
-from dwave.system import LeapHybridSampler
+from neal import SimulatedAnnealingSampler
 
 import frequency
 from philadelphia import load_problem, get_forbidden_set, P1_REUSE_DISTANCES, P2_REUSE_DISTANCES
@@ -78,7 +78,7 @@ class TestSmallProblem(unittest.TestCase):
 
         bqm = frequency.construct_bqm(demand, nfreq, reuse_distances)
 
-        sampler = LeapHybridSampler()
+        sampler = SimulatedAnnealingSampler()
         results = sampler.sample(bqm)
 
         violation_dict = frequency.check_results(demand, nfreq, reuse_distances, results.first, verbose=False)
@@ -91,6 +91,7 @@ class TestSmallProblem(unittest.TestCase):
 class TestIntegration(unittest.TestCase):
     """Test execution as a script."""
 
+    @unittest.skipIf(os.getenv('SKIP_INT_TESTS'), "Skipping integration test.")
     def test_integration(self):
         file_path = os.path.join(example_dir, "frequency.py")
 

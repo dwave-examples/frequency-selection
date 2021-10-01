@@ -46,14 +46,14 @@ def construct_bqm(demand, nfreq, reuse_distances, penalty_coef=1.0):
             problem is extended to include an objective.
 
     Returns:
-        AdjVectorBQM
+        dimod.BinaryQuadraticModel
     """
     # Variables:
     # x_vf, v in nodes, f in frequencies: Is f assigned to node v?
 
     nodes = sorted(list(demand.keys()))
 
-    bqm = dimod.AdjVectorBQM(dimod.BINARY)
+    bqm = dimod.BinaryQuadraticModel(dimod.BINARY)
 
     # Constraints to enforce demand at each node:
     # Sum_f[ (1-2C) xvf ] + Sum_j>i[ 2 xvfi xvfj ] + C^2

@@ -245,7 +245,7 @@ def plot_nodes(nodes, demand=None, interference_nodes=[], demand_violations=[]):
     ax.autoscale_view()
 
     if demand is not None:
-        cbar = f.colorbar(cm.ScalarMappable(norm=norm, cmap=cmap), alpha=alpha, orientation='horizontal')
+        cbar = f.colorbar(cm.ScalarMappable(norm=norm, cmap=cmap), ax=ax, alpha=alpha, orientation='horizontal')
         cbar.set_label('Demand')
 
 

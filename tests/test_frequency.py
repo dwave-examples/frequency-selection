@@ -13,12 +13,11 @@
 # limitations under the License.
 
 import unittest
-import networkx as nx
 import os
 import sys
 import subprocess
 
-from neal import SimulatedAnnealingSampler
+from dwave.samplers import SimulatedAnnealingSampler
 
 import frequency
 from philadelphia import load_problem, get_forbidden_set, P1_REUSE_DISTANCES, P2_REUSE_DISTANCES
@@ -50,7 +49,7 @@ class TestNetwork(unittest.TestCase):
 
         # Differs from P2:
         self.assertEqual(get_forbidden_set(4, 20, P1_REUSE_DISTANCES), {0})
-        
+
     def test_P2_definition(self):
 
         self.assertEqual(get_forbidden_set(1, 1, P2_REUSE_DISTANCES), {0, 1, 2, 3, 4})
@@ -73,7 +72,7 @@ class TestSmallProblem(unittest.TestCase):
     """Test solution to small problem."""
 
     def test_small(self):
-        
+
         demand, nfreq, reuse_distances = load_problem('small')
 
         bqm = frequency.construct_bqm(demand, nfreq, reuse_distances)
